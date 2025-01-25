@@ -2,9 +2,12 @@ package org.yuezhikong.geminisdk.util;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,7 +17,7 @@ public class Json_Builder {
     public static String complexObjToJson(Object obj) {
         if (Objects.isNull(obj)) return "";
         try {
-            Gson gson = new Gson();
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
             return gson.toJson(obj);
         } catch (Exception e) {
             e.printStackTrace();
@@ -22,29 +25,6 @@ public class Json_Builder {
         return "";
     }
 
-    public class Text {
-        @com.fasterxml.jackson.annotation.JsonProperty("contents")
-        private List<ContentsDTO> contents;
-
-        @lombok.NoArgsConstructor
-        @lombok.Data
-        public static class ContentsDTO {
-            @com.fasterxml.jackson.annotation.JsonProperty("parts")
-            private List<PartsDTO> parts;
-
-            @lombok.NoArgsConstructor
-            @lombok.Data
-            public static class PartsDTO {
-                @com.fasterxml.jackson.annotation.JsonProperty("text")
-                private String text;
-            }
-        }
-
-        public void setText(String text) {
-            ContentsDTO.PartsDTO parts = new ContentsDTO.PartsDTO();
-            parts.setText(text);
-        }
-    }
 
     @NoArgsConstructor
     @Data
