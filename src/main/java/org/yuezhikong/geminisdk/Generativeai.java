@@ -1,5 +1,6 @@
 package org.yuezhikong.geminisdk;
 
+import lombok.Setter;
 import org.yuezhikong.geminisdk.util.Image;
 import org.yuezhikong.geminisdk.util.Json_Builder;
 import org.yuezhikong.geminisdk.util.Rest;
